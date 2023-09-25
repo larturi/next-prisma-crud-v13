@@ -2,7 +2,7 @@ import FormTask from "@/components/FormTask"
 
 function DeleteTaskPage({params}) {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-[calc(100vh-85px)] flex justify-center items-center">
       <FormTask params={params}/>
     </div>
   )

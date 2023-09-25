@@ -87,7 +87,7 @@ export function FormTask({ params }) {
    return (
       <form
          onSubmit={onSubmit}
-         className={isDelete ? 'bg-indigo-700 p-10' : 'bg-slate-800 p-10'}
+         className={isDelete ? 'bg-slate-700 p-10' : 'bg-slate-800 p-10'}
       >
          <h1 className='text-3xl font-bold mb-7'>
             {isEdit
@@ -122,7 +122,7 @@ export function FormTask({ params }) {
          <button
             className={
                isDelete
-                  ? 'bg-indigo-950 w-full hover:bg-indigo-900 text-white py-2 px-4'
+                  ? 'bg-red-600 w-full hover:bg-red-800 text-white py-2 px-4'
                   : 'bg-blue-700 w-full hover:bg-blue-700 text-white py-2 px-4'
             }
          >
