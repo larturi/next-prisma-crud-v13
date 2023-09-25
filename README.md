@@ -15,4 +15,8 @@ bun dev
 npx prisma migrate dev --name init
 
 npx prisma studio
+
+# PROD
+
+npx prisma migrate dev
 ```
