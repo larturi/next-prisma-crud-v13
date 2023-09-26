@@ -20,5 +20,5 @@ npx prisma studio
 
 npx prisma migrate dev
 
-vercel deploy
+vercel --prod
 ```
