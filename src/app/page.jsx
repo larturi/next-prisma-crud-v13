@@ -1,15 +1,11 @@
 import TaskCard from '@/components/TaskCard';
+import { prisma } from '@/libs/prisma';
 import axios from 'axios';
 
 async function loadTasks() {
    try {
-      const res = await axios.get(`${process.env.API_URL}/api/tasks`, {
-         headers: {
-            'Cache-Control': 'no-store',
-         },
-      });
-
-      return res.data;
+      const tasks = await prisma.task.findMany()
+      return tasks
    } catch (error) {
       console.error('Error al cargar las tareas:', error);
       throw error;
