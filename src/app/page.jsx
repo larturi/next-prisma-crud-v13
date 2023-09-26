@@ -1,6 +1,5 @@
 import TaskCard from '@/components/TaskCard';
 import { prisma } from '@/libs/prisma';
-import axios from 'axios';
 
 async function loadTasks() {
    try {
@@ -11,6 +10,8 @@ async function loadTasks() {
       throw error;
    }
 }
+
+export const revalidate = 60
 
 async function HomePage() {
    const tasks = await loadTasks();
