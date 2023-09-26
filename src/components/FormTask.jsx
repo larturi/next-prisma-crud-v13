@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import axios from 'axios';
 
 export function FormTask({ params }) {
    const router = useRouter();
@@ -15,8 +16,8 @@ export function FormTask({ params }) {
 
    useEffect(() => {
       const getTaskById = async () => {
-         const res = await fetch(`/api/tasks/${idTask}`);
-         const task = await res.json();
+         const res = await axios.get(`/api/tasks/${idTask}`);
+         const task = await res.data;
          setTitle(task.title);
          setDescription(task.description);
       };
@@ -48,33 +49,41 @@ export function FormTask({ params }) {
 
       if (isEdit) {
          try {
-            await fetch(`/api/tasks/${idTask}`, {
-               method: 'PUT',
-               body: JSON.stringify({ title, description }),
-               headers: {
-                  'Content-Type': 'application/json',
+            await axios.put(
+               `/api/tasks/${idTask}`,
+               {
+                  title,
+                  description,
                },
-            });
+               {
+                  headers: {
+                     'Content-Type': 'application/json',
+                  },
+               }
+            );
          } catch (error) {
             console.error(error.message);
          }
       } else if (isDelete) {
          try {
-            await fetch(`/api/tasks/${idTask}`, {
-               method: 'DELETE',
-            });
+            await axios.delete(`/api/tasks/${idTask}`);
          } catch (error) {
             console.error(error.message);
          }
       } else {
          try {
-            await fetch('/api/tasks/', {
-               method: 'POST',
-               body: JSON.stringify({ title, description }),
-               headers: {
-                  'Content-Type': 'application/json',
+            await axios.post(
+               '/api/tasks/',
+               {
+                  title,
+                  description,
                },
-            });
+               {
+                  headers: {
+                     'Content-Type': 'application/json',
+                  },
+               }
+            );
          } catch (error) {
             console.error(error.message);
          }

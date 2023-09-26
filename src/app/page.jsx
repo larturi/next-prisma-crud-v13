@@ -1,12 +1,19 @@
 import TaskCard from '@/components/TaskCard';
+import axios from 'axios';
 
 async function loadTasks() {
-   const res = await fetch(`${process.env.API_URL}/api/tasks`, {
-      cache: 'no-store',
-   });
+   try {
+      const res = await axios.get(`${process.env.API_URL}/api/tasks`, {
+         headers: {
+            'Cache-Control': 'no-store',
+         },
+      });
 
-   const tasks = await res.json();
-   return tasks;
+      return res.data;
+   } catch (error) {
+      console.error('Error al cargar las tareas:', error);
+      throw error;
+   }
 }
 
 async function HomePage() {

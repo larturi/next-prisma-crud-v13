@@ -4,8 +4,8 @@
 ### Getting Started
 
 ```bash
-bun install
-bun dev
+yarn install
+yarn dev
 ```
 
 
@@ -19,4 +19,6 @@ npx prisma studio
 # PROD
 
 npx prisma migrate dev
+
+vercel deploy
 ```
